@@ -1,20 +1,30 @@
 import React from "react";
 
-export function Rating() {
-    return (
+type RatingPropsType ={
+    value:1|2|3|4|5
+}
+
+export function Rating(props:RatingPropsType) {
+    console.log("Rating rendering")
+
+   return  (
         <div>
-            <Star/>
-            <Star/>
-            <Star/>
-            <Star/>
-            <Star/>
+            <Star selected={props.value>0}/>
+            <Star selected={props.value>1}/>
+            <Star selected={props.value>2}/>
+            <Star selected={props.value>3}/>
+            <Star selected={props.value>4}/>
+
         </div>
     )
 }
-function Star() {
-    return (
-        <div>
-            <div>megaStar</div>
-        </div>
-    )
+
+type StarPropsType={
+    selected:boolean
 }
+function Star(props: StarPropsType) {
+    console.log("Star rendering")
+    if(props.selected===true){
+    return <span> <b> Star </b> </span>}
+    else { return <span>  Star  </span>}}
+

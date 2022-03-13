@@ -1,30 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
+import {DEFAULT_MAX_VERSION} from "tls";
 
-type RatingPropsType ={
-    value:1|2|3|4|5
-}
+type RatingPropsType = {}
 
-export function Rating(props:RatingPropsType) {
-    console.log("Rating rendering")
+function UnRating(props: RatingPropsType) {
 
-   return  (
+    let [value, setValue] = useState(0)
+    return (
         <div>
-            <Star selected={props.value>0}/>
-            <Star selected={props.value>1}/>
-            <Star selected={props.value>2}/>
-            <Star selected={props.value>3}/>
-            <Star selected={props.value>4}/>
+            <Star selected={value > 0} setValue={setValue} value={1}/>
+            <Star selected={value > 1} setValue={setValue} value={2}/>
+            <Star selected={value > 2} setValue={setValue} value={3}/>
+            <Star selected={value > 3} setValue={setValue} value={4}/>
+            <Star selected={value > 4} setValue={setValue} value={5}/>
+
 
         </div>
     )
 }
 
-type StarPropsType={
-    selected:boolean
+type StarPropsType = {
+    selected: boolean
+    value:1|2|3|4|5
+    setValue:(value:1|2|3|4|5)=>void
 }
-function Star(props: StarPropsType) {
-    console.log("Star rendering")
-    if(props.selected===true){
-    return <span> <b> Star </b> </span>}
-    else { return <span>  Star  </span>}}
 
+function Star(props: StarPropsType) {
+
+    return <span onClick={()=>{props.setValue(props.value)}}>
+    {props.selected ? <b> Star </b> : "Star"}
+</span>
+}
+
+export default UnRating

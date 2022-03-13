@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Accordion, AccordionTitle} from "./components/Accordion";
+import {Rating} from "./components/Rating";
+import UnRating from "./components/UnRating";
+import UncontrolledAccordion from "./components/uncontrolledAccordion";
+import OnOff from "./components/OnOff";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+// function sum(a: number, b: number) {
+//     alert(a + b)
+// }
+//
+// sum(23, 12)
+// sum(100, 34)
+
+
+function App(props: any) {
+    return (
+        <div className={'App'}>
+
+
+            <UncontrolledAccordion titleValue={'Menu'}/>
+
+            <Accordion titleValue={'Menu'} collapsed={false}/>
+
+            <OnOff/>
+
+            <UnRating/>
+
+            <Rating value={3}/>
+
+
+
+            {/*< Rating value={1}/>*/}
+            {/*< Rating value={2}/>*/}
+            {/*< Rating value={3}/>*/}
+            {/*< Rating value={4}/>*/}
+            {/*< Rating value={5}/>*/}
+
+
+        </div>
+    );
 }
+
+function AppTitle() {
+    return <>"This is APP"</>
+}
+
 
 export default App;
